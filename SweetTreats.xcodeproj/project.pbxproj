@@ -1,0 +1,588 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E6CC5DE32A50F37300314569 /* SweetTreatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5DE22A50F37300314569 /* SweetTreatsApp.swift */; };
+		E6CC5DE52A50F37300314569 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5DE42A50F37300314569 /* ContentView.swift */; };
+		E6CC5DE72A50F37400314569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6CC5DE62A50F37400314569 /* Assets.xcassets */; };
+		E6CC5DEA2A50F37400314569 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6CC5DE92A50F37400314569 /* Preview Assets.xcassets */; };
+		E6CC5DF42A50F37400314569 /* SweetTreatsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5DF32A50F37400314569 /* SweetTreatsTests.swift */; };
+		E6CC5DFE2A50F37400314569 /* SweetTreatsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5DFD2A50F37400314569 /* SweetTreatsUITests.swift */; };
+		E6CC5E002A50F37400314569 /* SweetTreatsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5DFF2A50F37400314569 /* SweetTreatsUITestsLaunchTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E6CC5DF02A50F37400314569 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6CC5DD72A50F37300314569 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6CC5DDE2A50F37300314569;
+			remoteInfo = SweetTreats;
+		};
+		E6CC5DFA2A50F37400314569 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E6CC5DD72A50F37300314569 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E6CC5DDE2A50F37300314569;
+			remoteInfo = SweetTreats;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E6CC5DDF2A50F37300314569 /* SweetTreats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetTreats.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6CC5DE22A50F37300314569 /* SweetTreatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetTreatsApp.swift; sourceTree = "<group>"; };
+		E6CC5DE42A50F37300314569 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		E6CC5DE62A50F37400314569 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E6CC5DE92A50F37400314569 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		E6CC5DEF2A50F37400314569 /* SweetTreatsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetTreatsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6CC5DF32A50F37400314569 /* SweetTreatsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetTreatsTests.swift; sourceTree = "<group>"; };
+		E6CC5DF92A50F37400314569 /* SweetTreatsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SweetTreatsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E6CC5DFD2A50F37400314569 /* SweetTreatsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetTreatsUITests.swift; sourceTree = "<group>"; };
+		E6CC5DFF2A50F37400314569 /* SweetTreatsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetTreatsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E6CC5DDC2A50F37300314569 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CC5DEC2A50F37400314569 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CC5DF62A50F37400314569 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E6CC5DD62A50F37300314569 = {
+			isa = PBXGroup;
+			children = (
+				E6CC5DE12A50F37300314569 /* SweetTreats */,
+				E6CC5DF22A50F37400314569 /* SweetTreatsTests */,
+				E6CC5DFC2A50F37400314569 /* SweetTreatsUITests */,
+				E6CC5DE02A50F37300314569 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E6CC5DE02A50F37300314569 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5DDF2A50F37300314569 /* SweetTreats.app */,
+				E6CC5DEF2A50F37400314569 /* SweetTreatsTests.xctest */,
+				E6CC5DF92A50F37400314569 /* SweetTreatsUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E6CC5DE12A50F37300314569 /* SweetTreats */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5DE22A50F37300314569 /* SweetTreatsApp.swift */,
+				E6CC5DE42A50F37300314569 /* ContentView.swift */,
+				E6CC5DE62A50F37400314569 /* Assets.xcassets */,
+				E6CC5DE82A50F37400314569 /* Preview Content */,
+			);
+			path = SweetTreats;
+			sourceTree = "<group>";
+		};
+		E6CC5DE82A50F37400314569 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5DE92A50F37400314569 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		E6CC5DF22A50F37400314569 /* SweetTreatsTests */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5DF32A50F37400314569 /* SweetTreatsTests.swift */,
+			);
+			path = SweetTreatsTests;
+			sourceTree = "<group>";
+		};
+		E6CC5DFC2A50F37400314569 /* SweetTreatsUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5DFD2A50F37400314569 /* SweetTreatsUITests.swift */,
+				E6CC5DFF2A50F37400314569 /* SweetTreatsUITestsLaunchTests.swift */,
+			);
+			path = SweetTreatsUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E6CC5DDE2A50F37300314569 /* SweetTreats */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6CC5E032A50F37400314569 /* Build configuration list for PBXNativeTarget "SweetTreats" */;
+			buildPhases = (
+				E6CC5DDB2A50F37300314569 /* Sources */,
+				E6CC5DDC2A50F37300314569 /* Frameworks */,
+				E6CC5DDD2A50F37300314569 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SweetTreats;
+			productName = SweetTreats;
+			productReference = E6CC5DDF2A50F37300314569 /* SweetTreats.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E6CC5DEE2A50F37400314569 /* SweetTreatsTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6CC5E062A50F37400314569 /* Build configuration list for PBXNativeTarget "SweetTreatsTests" */;
+			buildPhases = (
+				E6CC5DEB2A50F37400314569 /* Sources */,
+				E6CC5DEC2A50F37400314569 /* Frameworks */,
+				E6CC5DED2A50F37400314569 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6CC5DF12A50F37400314569 /* PBXTargetDependency */,
+			);
+			name = SweetTreatsTests;
+			productName = SweetTreatsTests;
+			productReference = E6CC5DEF2A50F37400314569 /* SweetTreatsTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E6CC5DF82A50F37400314569 /* SweetTreatsUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E6CC5E092A50F37400314569 /* Build configuration list for PBXNativeTarget "SweetTreatsUITests" */;
+			buildPhases = (
+				E6CC5DF52A50F37400314569 /* Sources */,
+				E6CC5DF62A50F37400314569 /* Frameworks */,
+				E6CC5DF72A50F37400314569 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E6CC5DFB2A50F37400314569 /* PBXTargetDependency */,
+			);
+			name = SweetTreatsUITests;
+			productName = SweetTreatsUITests;
+			productReference = E6CC5DF92A50F37400314569 /* SweetTreatsUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E6CC5DD72A50F37300314569 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1430;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					E6CC5DDE2A50F37300314569 = {
+						CreatedOnToolsVersion = 14.3.1;
+					};
+					E6CC5DEE2A50F37400314569 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = E6CC5DDE2A50F37300314569;
+					};
+					E6CC5DF82A50F37400314569 = {
+						CreatedOnToolsVersion = 14.3.1;
+						TestTargetID = E6CC5DDE2A50F37300314569;
+					};
+				};
+			};
+			buildConfigurationList = E6CC5DDA2A50F37300314569 /* Build configuration list for PBXProject "SweetTreats" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E6CC5DD62A50F37300314569;
+			productRefGroup = E6CC5DE02A50F37300314569 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E6CC5DDE2A50F37300314569 /* SweetTreats */,
+				E6CC5DEE2A50F37400314569 /* SweetTreatsTests */,
+				E6CC5DF82A50F37400314569 /* SweetTreatsUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E6CC5DDD2A50F37300314569 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6CC5DEA2A50F37400314569 /* Preview Assets.xcassets in Resources */,
+				E6CC5DE72A50F37400314569 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CC5DED2A50F37400314569 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CC5DF72A50F37400314569 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E6CC5DDB2A50F37300314569 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6CC5DE52A50F37300314569 /* ContentView.swift in Sources */,
+				E6CC5DE32A50F37300314569 /* SweetTreatsApp.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CC5DEB2A50F37400314569 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6CC5DF42A50F37400314569 /* SweetTreatsTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E6CC5DF52A50F37400314569 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E6CC5E002A50F37400314569 /* SweetTreatsUITestsLaunchTests.swift in Sources */,
+				E6CC5DFE2A50F37400314569 /* SweetTreatsUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E6CC5DF12A50F37400314569 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6CC5DDE2A50F37300314569 /* SweetTreats */;
+			targetProxy = E6CC5DF02A50F37400314569 /* PBXContainerItemProxy */;
+		};
+		E6CC5DFB2A50F37400314569 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E6CC5DDE2A50F37300314569 /* SweetTreats */;
+			targetProxy = E6CC5DFA2A50F37400314569 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		E6CC5E012A50F37400314569 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E6CC5E022A50F37400314569 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E6CC5E042A50F37400314569 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SweetTreats/Preview Content\"";
+				DEVELOPMENT_TEAM = RTK7JZUTTA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zachtarvin.SweetTreats;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		E6CC5E052A50F37400314569 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"SweetTreats/Preview Content\"";
+				DEVELOPMENT_TEAM = RTK7JZUTTA;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zachtarvin.SweetTreats;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		E6CC5E072A50F37400314569 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTK7JZUTTA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zachtarvin.SweetTreatsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetTreats.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SweetTreats";
+			};
+			name = Debug;
+		};
+		E6CC5E082A50F37400314569 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTK7JZUTTA;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zachtarvin.SweetTreatsTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SweetTreats.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SweetTreats";
+			};
+			name = Release;
+		};
+		E6CC5E0A2A50F37400314569 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTK7JZUTTA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zachtarvin.SweetTreatsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SweetTreats;
+			};
+			name = Debug;
+		};
+		E6CC5E0B2A50F37400314569 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RTK7JZUTTA;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.zachtarvin.SweetTreatsUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SweetTreats;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E6CC5DDA2A50F37300314569 /* Build configuration list for PBXProject "SweetTreats" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6CC5E012A50F37400314569 /* Debug */,
+				E6CC5E022A50F37400314569 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6CC5E032A50F37400314569 /* Build configuration list for PBXNativeTarget "SweetTreats" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6CC5E042A50F37400314569 /* Debug */,
+				E6CC5E052A50F37400314569 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6CC5E062A50F37400314569 /* Build configuration list for PBXNativeTarget "SweetTreatsTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6CC5E072A50F37400314569 /* Debug */,
+				E6CC5E082A50F37400314569 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E6CC5E092A50F37400314569 /* Build configuration list for PBXNativeTarget "SweetTreatsUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E6CC5E0A2A50F37400314569 /* Debug */,
+				E6CC5E0B2A50F37400314569 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E6CC5DD72A50F37300314569 /* Project object */;
+}
