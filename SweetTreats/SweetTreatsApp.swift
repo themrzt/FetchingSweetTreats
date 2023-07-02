@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct SweetTreatsApp: App {
+    @StateObject var viewModel: MenuViewModel = MenuViewModel()
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(viewModel: MenuViewModel())
         }
     }
 }
