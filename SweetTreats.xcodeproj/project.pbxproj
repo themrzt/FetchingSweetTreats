@@ -27,6 +27,7 @@
 		E6CC5E232A5100A100314569 /* MealImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5E222A5100A100314569 /* MealImageView.swift */; };
 		E6CC5E252A51010800314569 /* IngredientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5E242A51010800314569 /* IngredientView.swift */; };
 		E6CC5E272A51012500314569 /* DetailRegionList.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5E262A51012500314569 /* DetailRegionList.swift */; };
+		ED168CC92A519D4D00AC1AE7 /* MealRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = ED168CC82A519D4D00AC1AE7 /* MealRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,10 +67,11 @@
 		E6CC5E1A2A50F43000314569 /* Ingredient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ingredient.swift; sourceTree = "<group>"; };
 		E6CC5E1C2A50FF2800314569 /* DessertList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DessertList.swift; sourceTree = "<group>"; };
 		E6CC5E1E2A51007000314569 /* DetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailView.swift; sourceTree = "<group>"; };
-		E6CC5E202A51008A00314569 /* AboutMealStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMealStrip.swift; sourceTree = SOURCE_ROOT; };
-		E6CC5E222A5100A100314569 /* MealImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealImageView.swift; sourceTree = SOURCE_ROOT; };
-		E6CC5E242A51010800314569 /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientView.swift; sourceTree = SOURCE_ROOT; };
-		E6CC5E262A51012500314569 /* DetailRegionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailRegionList.swift; sourceTree = SOURCE_ROOT; };
+		E6CC5E202A51008A00314569 /* AboutMealStrip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AboutMealStrip.swift; path = "SweetTreats/Screens/Detail View/Accessory Views/AboutMealStrip.swift"; sourceTree = SOURCE_ROOT; };
+		E6CC5E222A5100A100314569 /* MealImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MealImageView.swift; path = "SweetTreats/Accessory Views/MealImageView.swift"; sourceTree = SOURCE_ROOT; };
+		E6CC5E242A51010800314569 /* IngredientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = IngredientView.swift; path = "SweetTreats/Screens/Detail View/Accessory Views/IngredientView.swift"; sourceTree = SOURCE_ROOT; };
+		E6CC5E262A51012500314569 /* DetailRegionList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DetailRegionList.swift; path = "SweetTreats/Screens/Detail View/Accessory Views/DetailRegionList.swift"; sourceTree = SOURCE_ROOT; };
+		ED168CC82A519D4D00AC1AE7 /* MealRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,10 +122,6 @@
 		E6CC5DE12A50F37300314569 /* SweetTreats */ = {
 			isa = PBXGroup;
 			children = (
-				E6CC5E262A51012500314569 /* DetailRegionList.swift */,
-				E6CC5E242A51010800314569 /* IngredientView.swift */,
-				E6CC5E222A5100A100314569 /* MealImageView.swift */,
-				E6CC5E202A51008A00314569 /* AboutMealStrip.swift */,
 				E6CC5DE22A50F37300314569 /* SweetTreatsApp.swift */,
 				E6CC5DE42A50F37300314569 /* ContentView.swift */,
 				E6CC5E282A51013200314569 /* Screens */,
@@ -172,11 +170,8 @@
 		E6CC5E112A50F3EE00314569 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				E6CC5E122A50F3F700314569 /* Meal.swift */,
-				E6CC5E162A50F41700314569 /* MealViewModel.swift */,
-				E6CC5E182A50F42200314569 /* Recipe.swift */,
-				E6CC5E1A2A50F43000314569 /* Ingredient.swift */,
-				E6CC5E142A50F40900314569 /* MenuViewModel.swift */,
+				ED168CCD2A519DC900AC1AE7 /* Codables */,
+				ED168CCE2A519DD100AC1AE7 /* View Models */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -184,10 +179,66 @@
 		E6CC5E282A51013200314569 /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				E6CC5E1C2A50FF2800314569 /* DessertList.swift */,
-				E6CC5E1E2A51007000314569 /* DetailView.swift */,
+				ED168CCB2A519D8D00AC1AE7 /* Detail View */,
+				ED168CCA2A519D7D00AC1AE7 /* Dessert List */,
 			);
 			path = Screens;
+			sourceTree = "<group>";
+		};
+		ED168CC72A519D1300AC1AE7 /* Accessory Views */ = {
+			isa = PBXGroup;
+			children = (
+				ED168CC82A519D4D00AC1AE7 /* MealRow.swift */,
+				E6CC5E222A5100A100314569 /* MealImageView.swift */,
+			);
+			path = "Accessory Views";
+			sourceTree = "<group>";
+		};
+		ED168CCA2A519D7D00AC1AE7 /* Dessert List */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5E1C2A50FF2800314569 /* DessertList.swift */,
+				ED168CC72A519D1300AC1AE7 /* Accessory Views */,
+			);
+			path = "Dessert List";
+			sourceTree = "<group>";
+		};
+		ED168CCB2A519D8D00AC1AE7 /* Detail View */ = {
+			isa = PBXGroup;
+			children = (
+				ED168CCC2A519DA300AC1AE7 /* Accessory Views */,
+				E6CC5E1E2A51007000314569 /* DetailView.swift */,
+			);
+			path = "Detail View";
+			sourceTree = "<group>";
+		};
+		ED168CCC2A519DA300AC1AE7 /* Accessory Views */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5E262A51012500314569 /* DetailRegionList.swift */,
+				E6CC5E242A51010800314569 /* IngredientView.swift */,
+				E6CC5E202A51008A00314569 /* AboutMealStrip.swift */,
+			);
+			path = "Accessory Views";
+			sourceTree = "<group>";
+		};
+		ED168CCD2A519DC900AC1AE7 /* Codables */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5E122A50F3F700314569 /* Meal.swift */,
+				E6CC5E182A50F42200314569 /* Recipe.swift */,
+				E6CC5E1A2A50F43000314569 /* Ingredient.swift */,
+			);
+			path = Codables;
+			sourceTree = "<group>";
+		};
+		ED168CCE2A519DD100AC1AE7 /* View Models */ = {
+			isa = PBXGroup;
+			children = (
+				E6CC5E162A50F41700314569 /* MealViewModel.swift */,
+				E6CC5E142A50F40900314569 /* MenuViewModel.swift */,
+			);
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +386,7 @@
 				E6CC5E192A50F42200314569 /* Recipe.swift in Sources */,
 				E6CC5E212A51008A00314569 /* AboutMealStrip.swift in Sources */,
 				E6CC5E272A51012500314569 /* DetailRegionList.swift in Sources */,
+				ED168CC92A519D4D00AC1AE7 /* MealRow.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

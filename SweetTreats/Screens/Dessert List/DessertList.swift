@@ -32,18 +32,3 @@ struct DessertList_Previews: PreviewProvider {
         }
     }
 }
-
-struct MealRow: View {
-    @ObservedObject var meal: MealViewModel
-    var body: some View {
-        HStack{
-            MealImageView(meal: meal)
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .frame(maxWidth:100)
-            VStack(alignment: .leading){
-                Text(meal.name)
-                    .font(.headline)
-            }
-        }
-    }
-}
