@@ -23,9 +23,16 @@ class MenuViewModel: ObservableObject{
                 await updateMeals(meals: results)
             }catch{
                 
-                print(error.localizedDescription)
-                self.error = error as? MealNetworkError
-                self.hasError.toggle()
+                print(error)
+                DispatchQueue.main.async{
+                    if let error = error as? MealNetworkError{
+                        self.error = error as? MealNetworkError
+                        self.hasError.toggle()
+                    } else{
+                        self.error = MealNetworkError.deviceOffline
+                        self.hasError.toggle()
+                    }
+                }
             }
         }
     }

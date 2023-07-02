@@ -15,6 +15,7 @@ enum MealNetworkError: LocalizedError{
     case connectionIssue
     case ateAllDesserts
     case rateLimitExceeded
+    case deviceOffline
 }
 
 extension MealNetworkError{
@@ -34,6 +35,10 @@ extension MealNetworkError{
             return "Sorry. Invalid request."
         case .notFound:
             return "Your request can't be found."
+        case .deviceOffline:
+            return "It looks like your device may be offline. Check your connection and try your request again."
+        @unknown default:
+            return "...is your device online?"
         }
     }
 }
