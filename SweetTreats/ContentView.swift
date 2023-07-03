@@ -45,7 +45,13 @@ struct ContentView: View {
             if selectedNavigation == .desserts{
                 NavigationStack(path: $navigationPath){
                     VStack{
+                        Text("No Dessert Selected")
+                            .font(.largeTitle)
+                            .bold()
                         Text("Make a selection to begin")
+                        Text("Fruit's not a dessert!")
+                            .font(.caption)
+                            .foregroundColor(.secondary)
                     }
                 }
             }else{
