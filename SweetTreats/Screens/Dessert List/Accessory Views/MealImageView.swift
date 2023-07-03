@@ -9,6 +9,7 @@ import SwiftUI
 
 struct MealImageView: View {
     @ObservedObject var meal: MealViewModel
+    
     var body: some View {
         if meal.cachedImageData != nil{
             cachedImage
@@ -25,12 +26,33 @@ struct MealImageView: View {
     }
     
     var asyncImage: some View{
-        AsyncImage(url: URL(string: meal.meal.thumbnailURL)) { image in
-            image.resizable()
+        AsyncImage(url: URL(string: meal.meal.thumbnailURL)){ phase in
+            switch phase{
+            case .empty:
+                if meal.cachedImageData == nil{
+                    ProgressView()
+                }else{
+                    Image(uiImage: meal.fetchCachedImage())
+                }
+            case .success(let image):
+                image.resizable()
                 .aspectRatio(contentMode: .fit)
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-        } placeholder: {
-            ProgressView()
+            case .failure(_):
+                Image(systemName: "fork.knife")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(maxHeight: 100)
+            @unknown default:
+                Image(systemName: "birthday.cake")
+                    .resizable()
+                    .scaledToFit()
+            }
+        }.task{
+            if meal.cachedImageData == nil{
+                try? await self.meal.cacheImage()
+                meal.cachedImageData = meal.fetchCachedImage().pngData()
+            }
         }
     }
 }

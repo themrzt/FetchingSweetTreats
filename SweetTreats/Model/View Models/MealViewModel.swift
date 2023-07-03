@@ -8,8 +8,9 @@
 import Foundation
 import SwiftUI
 
-@MainActor class MealViewModel: ObservableObject{
-    var meal: Meal
+class MealViewModel: ObservableObject, Hashable{
+    
+    @Published var meal: Meal
     @Published var name: String
     @Published var category: String = ""
     @Published var area: String? = nil
@@ -21,7 +22,7 @@ import SwiftUI
     @Published var imageSource: String? = nil
     @Published var dateModified: String? = nil
     @Published var thumbnailImageURL: URL? = nil
-    @Published var cachedImageData: Data? = nil
+    @Published var cachedImageData: Data?
     
     
     init(meal: Meal){
@@ -29,36 +30,66 @@ import SwiftUI
         self.name = meal.name
     }
     
+    static func == (lhs: MealViewModel, rhs: MealViewModel) -> Bool {
+        return lhs.meal.id == rhs.meal.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(meal.mealID)
+    }
+    
+    func inflateDetails(recipe: Recipe){
+        self.category = recipe.category
+        self.area = recipe.area ?? nil
+        //Line breaks from the API seem to like to use new lines than paragraph breaks. Heavy-handed here, but much easier to read for the user.
+        let cleanInstructions = recipe.instructions?.replacingOccurrences(of: "\r\n\r\n", with: "\r\n") ?? ""
+        let recipeInstructions = cleanInstructions.components(separatedBy: "\r\n").compactMap({$0.replacingOccurrences(of: "\r", with: "")
+                .replacingOccurrences(of: "\n", with: "")
+        })
+        self.instructions =  recipeInstructions
+        self.ingredients = recipe.ingredients
+        self.tags = recipe.tags ?? []
+        self.youTubeURL = recipe.youTube ?? nil
+        self.source = recipe.source
+        self.imageSource = recipe.imageSource
+        if let recipeImageString = recipe.mealThumb{
+            self.thumbnailImageURL = URL(string: recipeImageString)
+        }else{
+            if let mealThumb = URL(string: meal.thumbnailURL){
+                self.thumbnailImageURL = mealThumb
+            }
+        }
+        Task{
+            try await cacheImage()
+        }
+    }
+    
     func getDetails(){
         Task{
             let recipe = try await NetworkManager.shared.fetchDetails(mealID: meal.mealID)
-            self.category = recipe.category
-            self.area = recipe.area ?? nil
-            //Line breaks from the API seem to like to use new lines than paragraph breaks. Heavy-handed here, but much easier to read for the user.
-            let cleanInstructions = recipe.instructions?.replacingOccurrences(of: "\r\n\r\n", with: "\r\n") ?? ""
-            let recipeInstructions = cleanInstructions.components(separatedBy: "\r\n").compactMap({$0.replacingOccurrences(of: "\r", with: "")
-                    .replacingOccurrences(of: "\n", with: "")
-            })
-            self.instructions =  recipeInstructions ?? []
-            self.ingredients = recipe.ingredients
-            self.tags = recipe.tags ?? []
-            self.youTubeURL = recipe.youTube ?? nil
-            self.source = recipe.source
-            self.imageSource = recipe.imageSource
-            if let recipeImageString = recipe.mealThumb{
-                self.thumbnailImageURL = URL(string: recipeImageString)
-            }else{
-                if let mealThumb = URL(string: meal.thumbnailURL){
-                    self.thumbnailImageURL = mealThumb
+            
+            //Errors should be handled here, but in the interest of time, let the AsyncImage stand in its place.
+            if cachedImageData == nil{
+                do{
+                    try await cacheImage()
+                    
+                }catch{
+                    print("❌ \(error)")
                 }
+            }
+            
+            DispatchQueue.main.async{
+                self.inflateDetails(recipe: recipe)
             }
         }
     }
     
     func cacheImage() async throws {
-        guard let image = try await NetworkManager.shared.downloadImage(from: meal.thumbnailURL) else{return}
-        self.cachedImageData = image.pngData()
-    
+        guard let image = try await NetworkManager.shared.downloadImage(from: meal.thumbnailURL) else{ throw MealNetworkError.notFound }
+        guard let data = image.pngData() else{ return}
+        DispatchQueue.main.async{
+            self.cachedImageData = data
+        }
     }
     
     func fetchCachedImage() -> UIImage{

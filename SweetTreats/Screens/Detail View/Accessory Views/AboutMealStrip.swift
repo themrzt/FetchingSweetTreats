@@ -108,7 +108,7 @@ enum CulturalOriginLabel: String, RawRepresentable{
 
 struct AboutMealStrip: View {
     @EnvironmentObject var meal: MealViewModel
-    @EnvironmentObject var viewModel: MenuViewModel
+    @ObservedObject var viewModel: MenuViewModel
     
     var body: some View {
         VStack {
@@ -131,13 +131,8 @@ struct AboutMealStrip: View {
                             .bold()
                             .font(.subheadline)
                             .foregroundColor(.secondary)
-                        NavigationLink{
-                            DetailRegionList(area: meal.area)
-                                .environmentObject(viewModel)
-                        } label: {
                             Text(CulturalOriginLabel(culture: origin).textFlag())
                                 .bold()
-                        }
                     }
                 }
             }
@@ -151,13 +146,12 @@ struct AboutMealStrip_Previews: PreviewProvider {
     
     static func dish() -> MealViewModel{
         let meal = Meal.preview
-        var model = MealViewModel(meal: meal)
+        let model = MealViewModel(meal: meal)
         model.area = "British"
         return model
     }
     static var previews: some View {
-        AboutMealStrip()
+        AboutMealStrip(viewModel: MenuViewModel())
             .environmentObject(dish())
-            .environmentObject(MenuViewModel())
     }
 }

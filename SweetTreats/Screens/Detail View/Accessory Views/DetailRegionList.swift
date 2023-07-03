@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct DetailRegionList: View {
-    @EnvironmentObject var viewModel: MenuViewModel
-    @State var area: String?
+    @ObservedObject var viewModel: MenuViewModel
+    @State var area: String = ""
+    @State private var similarMeals = [MealViewModel]()
     var body: some View {
         List{
-            ForEach(viewModel.meals.filter{$0.area == area ?? ""}, id: \.meal.id){ meal in
+            ForEach(similarMeals, id: \.meal.id){ meal in
                 NavigationLink{
                     DetailView(meal: meal)
                 } label:{
@@ -22,19 +23,27 @@ struct DetailRegionList: View {
         }
         .onAppear{
             Task{
-                guard let area = area else{return}
-                viewModel.updateRegionalMeals(region: area)
+                let meals = try? await NetworkManager.shared.fetchRegionalMeals(region: area).compactMap({MealViewModel(meal: $0)})
+                if let meals = meals{
+                    updateMeals(meals: meals)
+                }
+                
             }
+           
         }
-        .navigationTitle(area != nil ? "Also \(area!)" : "More like this")
+        .navigationTitle("More \(area) Desserts")
     }
     
-    
+    private func updateMeals(meals: [MealViewModel]){
+        let mealIDs = meals.compactMap{ $0.meal.mealID }
+            let matches = viewModel.meals.filter{ mealIDs.contains($0.meal.mealID)}
+        self.similarMeals = matches
+    }
 }
 
 struct DetailRegionList_Previews: PreviewProvider {
     static var previews: some View {
-        DetailRegionList(area: "British")
-            .environmentObject(MenuViewModel())
+        DetailRegionList(viewModel: MenuViewModel(), area: "British")
+            
     }
 }

@@ -13,6 +13,7 @@ struct Meal: Identifiable, Codable, Hashable{
     var mealID: String
     var name: String
     var thumbnailURL: String
+    var imageData: Data?
     
     
     func hash(into hasher: inout Hasher) {
@@ -27,8 +28,8 @@ struct Meal: Identifiable, Codable, Hashable{
         self.mealID = mealID
         self.name = name
         self.thumbnailURL = thumbnailURL
+        
     }
-    
     
     #if DEBUG
     static let preview = Meal(mealID: "52959", name: "Creamy Heart Soup", thumbnailURL: "https://oyster.ignimgs.com/mediawiki/apis.ign.com/the-legend-of-zelda-breath-of-the-wild-2/0/0f/59-recipe-totk.jpg")

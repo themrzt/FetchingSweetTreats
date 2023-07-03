@@ -20,41 +20,41 @@ struct DetailView: View {
     var body: some View {
         ScrollView{
             MealImageView(meal: meal)
-            AboutMealStrip()
-                .environmentObject(menuViewModel)
+            AboutMealStrip(viewModel: menuViewModel)
             Picker("Viewing", selection: $selectedView) {
                 ForEach(SelectedDetailView.allCases, id:\.self){ detail in
                     Text(detail.rawValue).tag(detail)
                 }
             }.pickerStyle(.segmented)
-                
                 .padding(.horizontal)
+            
             switch selectedView {
-            case .instructions:
-                VStack(alignment: .leading){
-                    
-                    Text("Instructions")
-                        .font(.title)
-                        .bold()
-                        
-                    ForEach(meal.instructions, id:\.self){ instructionStep in
-                        Text(instructionStep)
-                            .padding(.bottom, 5)
+                case .instructions:
+                    VStack(alignment: .leading){
+                        Text("Instructions")
+                            .font(.title)
+                            .bold()
+    
+                        ForEach(meal.instructions, id:\.self){ instructionStep in
+                            Text(instructionStep)
+                                .padding(.bottom, 5)
+                        }
                     }
-                }.frame(maxWidth: .infinity)
+                    .frame(maxWidth: .infinity)
                     .padding(.horizontal)
-            case .ingredients:
-                IngredientView()
-            }
-        }
-        .onAppear{
-            if meal.instructions.isEmpty{
-                meal.getDetails()
+                case .ingredients:
+                    IngredientView()
             }
         }
         .navigationTitle(meal.name)
         .environmentObject(menuViewModel)
         .environmentObject(meal)
+        .task{
+            meal.getDetails()
+        }
+        .onChange(of: meal) { newValue in
+            newValue.getDetails()
+        }
     }
 }
 

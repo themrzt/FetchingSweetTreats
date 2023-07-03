@@ -8,61 +8,73 @@
 import SwiftUI
 
 class MenuViewModel: ObservableObject{
+    private let defaultsKey = "SavedTreatsMenu"
     @Published var meals = [MealViewModel]()
     @Published private(set) var error: MealNetworkError?
     @Published var hasError: Bool = false
     
     init(){
-        fetchMeals()
+        loadSavedMenu()
+        Task{
+            await fetchMeals()
+        }
     }
     
-    private func fetchMeals(){
-        Task{
-            do{
-                let results = try await NetworkManager.shared.fetchMeals(with: "Dessert")
-                await updateMeals(meals: results)
-            }catch{
-                
-                print(error)
-                DispatchQueue.main.async{
-                    if let error = error as? MealNetworkError{
-                        self.error = error as? MealNetworkError
-                        self.hasError.toggle()
-                    } else{
-                        self.error = MealNetworkError.deviceOffline
-                        self.hasError.toggle()
+    func saveMenu(){
+        let menu = TreatsMenu(meals: meals.compactMap{$0.meal})
+        let encoder = JSONEncoder()
+        do{
+            let savedMenu = try encoder.encode(menu)
+            UserDefaults.standard.setValue(savedMenu, forKey: defaultsKey)
+        }catch{
+            print(error)
+        }
+    }
+    
+    private func loadSavedMenu(){
+        guard let treatMenuData = UserDefaults.standard.data(forKey: defaultsKey) else{ print("❌ could not load"); return }
+        
+        let decoder = JSONDecoder()
+        decoder.keyDecodingStrategy = .convertFromSnakeCase
+        
+        do{
+            let menu = try decoder.decode(TreatsMenu.self, from: treatMenuData)
+            self.meals = menu.meals.compactMap{MealViewModel(meal: $0)}
+        }catch{
+            print("❌ Could not load \(error)")
+        }
+        
+    }
+    
+    private func fetchMeals() async{
+        do{
+            let newMeals = try await NetworkManager.shared.fetchMeals(with: "Dessert")
+            if self.meals.count > 0{
+                let unique = newMeals.filter { newMeal in
+                    let existing = meals.map{ $0.meal.mealID }
+                    if existing.contains(newMeal.mealID){
+                        return false
+                    }else{
+                        return true
                     }
+                }
+                if unique.count > 0{
+                    await updateMeals(meals: unique)
+                }
+            }else{
+                await updateMeals(meals: newMeals)
+            }
+        }catch{
+            DispatchQueue.main.async{
+                if let error = error as? MealNetworkError{
+                    self.error = error
+                    self.hasError.toggle()
+                } else{
+                    self.error = MealNetworkError.deviceOffline
+                    self.hasError.toggle()
                 }
             }
         }
-    }
-    
-    @MainActor private func updateMeal(mealID: String){
-        guard let index = meals.firstIndex(where: {$0.meal.mealID == mealID}) else{return}
-        var mealModel = meals[index]
-        mealModel.getDetails()
-        meals.remove(at: index)
-        meals.insert(mealModel, at: index)
-    }
-    
-    func updateRegionalMeals(region: String){
-        Task{
-            let meals = try await NetworkManager.shared.fetchRegionalMeals(region: region)
-            await updateRegionalMeals(meals: meals)
-        }
-    }
-    
-    @MainActor private func updateRegionalMeals(meals: [Meal]){
-        let models = meals.compactMap{ MealViewModel(meal: $0) }
-        let newIDs = models.map{$0.meal.mealID}
-        let existing = self.meals.map{$0.meal.mealID}
-        let uniques = newIDs.filter{ !existing.contains($0)}
-        print("That's \(uniques.count)")
-        print("Uniques: \(uniques.map{$0})")
-        print("Existing: \(existing.map{$0})")
-        var newMeals = self.meals.filter{ uniques.contains($0.meal.mealID)}
-        print("And \(newMeals.count) new meals")
-        _ = newMeals.map{ self.meals.append($0)}
     }
     
     @MainActor private func updateMeals(meals: [Meal]){
@@ -71,4 +83,5 @@ class MenuViewModel: ObservableObject{
         }
         self.meals = observables
     }
+
 }

@@ -9,19 +9,22 @@ import SwiftUI
 
 struct DessertList: View {
     @ObservedObject var viewModel: MenuViewModel
+
     var body: some View {
-        
         List{
             ForEach(viewModel.meals, id: \.meal.id){ meal in
-                NavigationLink {
-                    DetailView(meal: meal)
-                        .environmentObject(viewModel)
-                } label: {
+                NavigationLink(value: meal){
                     MealRow(meal: meal)
+                        .frame(alignment: .leading)
                 }
             }
-            .navigationTitle("Meals")
-        }.environmentObject(viewModel)
+        }
+        .navigationTitle("Desserts")
+        .navigationDestination(for: MealViewModel.self) { meal in
+            DetailView(meal: meal)
+                .environmentObject(viewModel)
+        }
+        .environmentObject(viewModel)
     }
 }
 

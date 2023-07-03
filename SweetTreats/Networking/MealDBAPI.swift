@@ -37,8 +37,6 @@ extension MealNetworkError{
             return "Your request can't be found."
         case .deviceOffline:
             return "It looks like your device may be offline. Check your connection and try your request again."
-        @unknown default:
-            return "...is your device online?"
         }
     }
 }

@@ -17,13 +17,29 @@ final class SweetTreatsTests: XCTestCase {
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
-
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-        // Any test you write for XCTest can be annotated as throws and async.
-        // Mark your test throws to produce an unexpected failure when your test encounters an uncaught error.
-        // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
+    
+    func testMealFetchCall() throws{
+        let realCategory = "Desserts"
+        let fakeCategory = "Bottles"
+        
+        Task{
+            do{
+                let realResults = try await NetworkManager.shared.fetchMeals(with: realCategory)
+                let fakeResults = try await NetworkManager.shared.fetchMeals(with: fakeCategory)
+                XCTAssert(realResults.count > 0 && fakeResults.count == 0)
+            }catch{
+                print("✨ Yo \(error)")
+            }
+        }
+    }
+    
+    func testImageCache(){
+        Task{
+            let meal = Meal.preview
+            let mealModel = MealViewModel(meal: meal)
+            
+            XCTAssertNil(mealModel.cachedImageData)
+        }
     }
 
     func testPerformanceExample() throws {

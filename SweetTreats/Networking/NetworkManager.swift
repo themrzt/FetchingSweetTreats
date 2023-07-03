@@ -44,8 +44,7 @@ class NetworkManager{
         guard let filterBase = URL(string: MealDBEndpoint.filteredCategories.endPointPath) else{ throw MealNetworkError.invalidRequest }
         
         let queryItem = URLQueryItem(name: "c", value: category)
-        var requestURL = filterBase.appending(queryItems: [queryItem])
-        
+        let requestURL = filterBase.appending(queryItems: [queryItem])
         
         do{
             let data = try await requestData(requestURL: requestURL)
@@ -85,6 +84,10 @@ class NetworkManager{
         return meals
     }
     
+    func fetchThumbnail(url: URL) async throws -> Data{
+        return try await requestData(requestURL: url)
+    }
+    
     private func requestData(requestURL: URL) async throws -> Data{
         do{
             let (data, response) = try await URLSession.shared.data(from: requestURL)
@@ -97,9 +100,9 @@ class NetworkManager{
                 print(status)
                 if status == 429{
                     print("throwing at \(requestURL.absoluteString)")
-                    throw MealNetworkError.rateLimitExceeded
+                    try await Task.sleep(nanoseconds: 5000)
                 }
-                throw MealNetworkError.notFound
+                throw MealNetworkError.rateLimitExceeded
             }
             
             return data
@@ -118,7 +121,7 @@ class NetworkManager{
             
         }catch{
             print("❌ decoded meals: \(error)")
-            throw error
+            throw MealNetworkError.notFound
         }
     }
     
