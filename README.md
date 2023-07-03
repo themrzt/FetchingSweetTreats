@@ -1,5 +1,5 @@
 # FetchingSweetTreats
-"Sweet Treats" is an example app for playing with the (Meal DB API)[https://www.themealdb.com/api.php]. 
+"Sweet Treats" is an example app for playing with the [The Meal DB](https://www.themealdb.com/api.php). 
 
 ## Features
 This repo currently features a thin implementation of Swift networking using structured concurrency. It allows you to view and dive into details on 100 dessert recipes from the Meal DB.
