@@ -136,7 +136,11 @@ struct AboutMealStrip: View {
                     }
                 }
             }
-            Spacer()
+            if let youTube = meal.youtubeLink(){
+                Link(destination: youTube) {
+                    Label("Watch on YouTube", systemImage: "play.tv.fill")
+                }
+            }
         }.padding(.horizontal)
         Divider()
     }

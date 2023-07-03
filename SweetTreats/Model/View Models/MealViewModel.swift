@@ -72,12 +72,10 @@ class MealViewModel: ObservableObject, Hashable{
             if cachedImageData == nil{
                 do{
                     try await cacheImage()
-                    
                 }catch{
                     print("❌ \(error)")
                 }
             }
-            
             DispatchQueue.main.async{
                 self.inflateDetails(recipe: recipe)
             }
@@ -97,5 +95,10 @@ class MealViewModel: ObservableObject, Hashable{
             return UIImage(systemName: "fork.knife")!
         }
         return image
+    }
+    
+    func youtubeLink() -> URL?{
+        guard let string = youTubeURL, let url = URL(string: string) else{ return nil}
+        return url
     }
 }
