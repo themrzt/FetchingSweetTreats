@@ -49,12 +49,6 @@ struct DetailView: View {
         .navigationTitle(meal.name)
         .environmentObject(menuViewModel)
         .environmentObject(meal)
-        .task{
-            meal.getDetails()
-        }
-        .onChange(of: meal) { newValue in
-            newValue.getDetails()
-        }
     }
 }
 

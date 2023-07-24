@@ -28,6 +28,11 @@ class MealViewModel: ObservableObject, Hashable{
     init(meal: Meal){
         self.meal = meal
         self.name = meal.name
+        guard let recipe = meal.recipe else{return}
+        self.instructions = recipe.instructions?.components(separatedBy: "\r\n") ?? []
+        self.ingredients = recipe.ingredients
+        self.category = recipe.category
+        self.area = recipe.area
     }
     
     static func == (lhs: MealViewModel, rhs: MealViewModel) -> Bool {
@@ -61,24 +66,6 @@ class MealViewModel: ObservableObject, Hashable{
         }
         Task{
             try await cacheImage()
-        }
-    }
-    
-    func getDetails(){
-        Task{
-            let recipe = try await NetworkManager.shared.fetchDetails(mealID: meal.mealID)
-            
-            //Errors should be handled here, but in the interest of time, let the AsyncImage stand in its place.
-            if cachedImageData == nil{
-                do{
-                    try await cacheImage()
-                }catch{
-                    print("❌ \(error)")
-                }
-            }
-            DispatchQueue.main.async{
-                self.inflateDetails(recipe: recipe)
-            }
         }
     }
     

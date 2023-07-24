@@ -51,7 +51,27 @@ class NetworkManager{
             
             let meals = try decodeMeals(from: data)
             
-            return meals
+            return try await withThrowingTaskGroup(of: Recipe.self){ group in
+                var recipes = [Recipe]()
+                var pairedMeals = [Meal]()
+                recipes.reserveCapacity(meals.count)
+                
+                _ = meals.map{ meal in
+                    group.addTask{
+                        return try await self.fetchDetails(mealID: meal.mealID)
+                    }
+                }
+                
+                for try await recipe in group{
+                    if let meal = meals.first(where: {$0.mealID == recipe.idMeal}){
+                        var newMeal = meal
+                        newMeal.recipe = recipe
+                        pairedMeals.append(newMeal)
+                    }
+                    recipes.append(recipe)
+                }
+                return pairedMeals
+            }
         }catch{
             print(error)
             throw error

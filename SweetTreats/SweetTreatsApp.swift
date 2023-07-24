@@ -14,7 +14,7 @@ struct SweetTreatsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            ContentView(viewModel: MenuViewModel())
+            ContentView(viewModel: viewModel)
         }
         .onChange(of: phase) { newValue in
             switch newValue{

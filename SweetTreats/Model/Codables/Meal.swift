@@ -14,6 +14,7 @@ struct Meal: Identifiable, Codable, Hashable{
     var name: String
     var thumbnailURL: String
     var imageData: Data?
+    var recipe: Recipe?
     
     
     func hash(into hasher: inout Hasher) {
