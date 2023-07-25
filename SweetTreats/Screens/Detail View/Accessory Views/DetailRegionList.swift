@@ -16,6 +16,7 @@ struct DetailRegionList: View {
             ForEach(similarMeals, id: \.meal.id){ meal in
                 NavigationLink{
                     DetailView(meal: meal)
+                        .environmentObject(viewModel)
                 } label:{
                     MealRow(meal: meal)
                 }
@@ -23,10 +24,11 @@ struct DetailRegionList: View {
         }
         .onAppear{
             Task{
-                let meals = try? await NetworkManager.shared.fetchRegionalMeals(region: area).compactMap({MealViewModel(meal: $0)})
-                if let meals = meals{
+                let meals = viewModel.meals.filter{$0.area == area}
+                //try? await NetworkManager.shared.fetchRegionalMeals(region: area).compactMap({MealViewModel(meal: $0)})
+//                if let meals = meals{
                     updateMeals(meals: meals)
-                }
+//                }
                 
             }
            

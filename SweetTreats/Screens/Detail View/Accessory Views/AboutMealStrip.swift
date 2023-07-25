@@ -131,8 +131,10 @@ struct AboutMealStrip: View {
                             .bold()
                             .font(.subheadline)
                             .foregroundColor(.secondary)
+                        NavigationLink(value: origin){
                             Text(CulturalOriginLabel(culture: origin).textFlag())
                                 .bold()
+                        }
                     }
                 }
             }

@@ -22,7 +22,7 @@ struct DetailView: View {
             MealImageView(meal: meal)
             AboutMealStrip(viewModel: menuViewModel)
             Picker("Viewing", selection: $selectedView) {
-                ForEach(SelectedDetailView.allCases, id:\.self){ detail in
+                ForEach(SelectedDetailView.allCases, id:\.rawValue){ detail in
                     Text(detail.rawValue).tag(detail)
                 }
             }.pickerStyle(.segmented)
@@ -49,6 +49,7 @@ struct DetailView: View {
         .navigationTitle(meal.name)
         .environmentObject(menuViewModel)
         .environmentObject(meal)
+        
     }
 }
 

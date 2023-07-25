@@ -12,7 +12,7 @@ struct DessertList: View {
 
     var body: some View {
         List{
-            ForEach(viewModel.meals, id: \.meal.id){ meal in
+            ForEach(viewModel.meals.sorted(by: {$0.name < $1.name}), id: \.meal.id){ meal in
                 NavigationLink(value: meal){
                     MealRow(meal: meal)
                         .frame(alignment: .leading)
@@ -23,6 +23,9 @@ struct DessertList: View {
         .navigationDestination(for: MealViewModel.self) { meal in
             DetailView(meal: meal)
                 .environmentObject(viewModel)
+        }
+        .navigationDestination(for: String.self) { area in
+            DetailRegionList(viewModel: viewModel, area: area)
         }
         .environmentObject(viewModel)
     }
