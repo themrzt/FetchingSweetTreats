@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E69298F82A72161B0057A01C /* ImageCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69298F72A72161B0057A01C /* ImageCache.swift */; };
+		E69298FA2A72178D0057A01C /* CacheManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E69298F92A72178D0057A01C /* CacheManager.swift */; };
 		E6CC5DE32A50F37300314569 /* SweetTreatsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5DE22A50F37300314569 /* SweetTreatsApp.swift */; };
 		E6CC5DE52A50F37300314569 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6CC5DE42A50F37300314569 /* ContentView.swift */; };
 		E6CC5DE72A50F37400314569 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E6CC5DE62A50F37400314569 /* Assets.xcassets */; };
@@ -44,6 +46,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E69298F72A72161B0057A01C /* ImageCache.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCache.swift; sourceTree = "<group>"; };
+		E69298F92A72178D0057A01C /* CacheManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CacheManager.swift; sourceTree = "<group>"; };
 		E6CC5DDF2A50F37300314569 /* SweetTreats.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SweetTreats.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6CC5DE22A50F37300314569 /* SweetTreatsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SweetTreatsApp.swift; sourceTree = "<group>"; };
 		E6CC5DE42A50F37300314569 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -142,6 +146,8 @@
 			children = (
 				E6CC5E0C2A50F38D00314569 /* MealDBAPI.swift */,
 				E6CC5E0F2A50F3CB00314569 /* NetworkManager.swift */,
+				E69298F72A72161B0057A01C /* ImageCache.swift */,
+				E69298F92A72178D0057A01C /* CacheManager.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -332,8 +338,10 @@
 				E6CC5E152A50F40900314569 /* MenuViewModel.swift in Sources */,
 				E6CC5DE52A50F37300314569 /* ContentView.swift in Sources */,
 				E6CC5DE32A50F37300314569 /* SweetTreatsApp.swift in Sources */,
+				E69298F82A72161B0057A01C /* ImageCache.swift in Sources */,
 				E6CC5E1D2A50FF2800314569 /* DessertList.swift in Sources */,
 				E6CC5E252A51010800314569 /* IngredientView.swift in Sources */,
+				E69298FA2A72178D0057A01C /* CacheManager.swift in Sources */,
 				E6CC5E192A50F42200314569 /* Recipe.swift in Sources */,
 				ED8F387F2A5313BD00F44B90 /* Menu.swift in Sources */,
 				E6CC5E212A51008A00314569 /* AboutMealStrip.swift in Sources */,

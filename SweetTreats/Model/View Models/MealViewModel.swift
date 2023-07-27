@@ -33,6 +33,7 @@ class MealViewModel: ObservableObject, Hashable{
         self.ingredients = recipe.ingredients
         self.category = recipe.category
         self.area = recipe.area
+        self.thumbnailImageURL = URL(string: meal.thumbnailURL)
     }
     
     static func == (lhs: MealViewModel, rhs: MealViewModel) -> Bool {
@@ -41,32 +42,6 @@ class MealViewModel: ObservableObject, Hashable{
     
     func hash(into hasher: inout Hasher) {
         hasher.combine(meal.mealID)
-    }
-    
-    func inflateDetails(recipe: Recipe){
-        self.category = recipe.category
-        self.area = recipe.area ?? nil
-        //Line breaks from the API seem to like to use new lines than paragraph breaks. Heavy-handed here, but much easier to read for the user.
-        let cleanInstructions = recipe.instructions?.replacingOccurrences(of: "\r\n\r\n", with: "\r\n") ?? ""
-        let recipeInstructions = cleanInstructions.components(separatedBy: "\r\n").compactMap({$0.replacingOccurrences(of: "\r", with: "")
-                .replacingOccurrences(of: "\n", with: "")
-        })
-        self.instructions =  recipeInstructions
-        self.ingredients = recipe.ingredients
-        self.tags = recipe.tags ?? []
-        self.youTubeURL = recipe.youTube ?? nil
-        self.source = recipe.source
-        self.imageSource = recipe.imageSource
-        if let recipeImageString = recipe.mealThumb{
-            self.thumbnailImageURL = URL(string: recipeImageString)
-        }else{
-            if let mealThumb = URL(string: meal.thumbnailURL){
-                self.thumbnailImageURL = mealThumb
-            }
-        }
-        Task{
-            try await cacheImage()
-        }
     }
     
     func cacheImage() async throws {

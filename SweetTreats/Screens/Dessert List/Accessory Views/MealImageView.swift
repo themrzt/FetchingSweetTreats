@@ -7,58 +7,45 @@
 
 import SwiftUI
 
-struct MealImageView: View {
+struct MealImageView<Content: View>: View {
     @ObservedObject var meal: MealViewModel
+    @StateObject private var manager = CacheManager()
+    
+    let content: (AsyncImagePhase) -> Content
+    
+    init(meal: MealViewModel, @ViewBuilder content: @escaping (AsyncImagePhase) -> Content){
+        self.meal = meal
+        self.content = content
+    }
     
     var body: some View {
-        if meal.cachedImageData != nil{
-            cachedImage
-        }else{
-            asyncImage
-        }
-    }
-    
-    var cachedImage: some View{
-        Image(uiImage: meal.fetchCachedImage())
-            .resizable()
-            .scaledToFit()
-            .frame(maxWidth: .infinity)
-    }
-    
-    var asyncImage: some View{
-        AsyncImage(url: URL(string: meal.meal.thumbnailURL)){ phase in
-            switch phase{
-            case .empty:
-                if meal.cachedImageData == nil{
-                    ProgressView()
-                }else{
-                    Image(uiImage: meal.fetchCachedImage())
+        Group{
+            switch manager.currentState{
+            case .loading:
+                content(.empty)
+            case .success(let data):
+                #if os(iOS)
+                if let image = UIImage(data: data){
+                    content(.success(Image(uiImage: image)))
                 }
-            case .success(let image):
-                image.resizable()
-                .aspectRatio(contentMode: .fit)
-                .frame(maxWidth: .infinity, maxHeight: .infinity)
-            case .failure(_):
-                Image(systemName: "fork.knife")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(maxHeight: 100)
-            @unknown default:
-                Image(systemName: "birthday.cake")
-                    .resizable()
-                    .scaledToFit()
+                #elseif os(macOS)
+                if let image = NSImage(data: data){
+                    content(.success(Image(nsImage: image)))
+                }
+                #endif
+            case .failed(let error):
+                content(.failure(error))
+            default:
+                content(.empty)
             }
         }.task{
-            if meal.cachedImageData == nil{
-                try? await self.meal.cacheImage()
-                meal.cachedImageData = meal.fetchCachedImage().pngData()
-            }
+            await manager.load(meal.thumbnailImageURL?.absoluteString ?? "")
         }
     }
 }
 
 struct MealImageView_Previews: PreviewProvider {
     static var previews: some View {
-        MealImageView(meal: MealViewModel(meal: Meal.preview))
+        MealImageView(meal: MealViewModel(meal: Meal.preview)){ _ in EmptyView()}
     }
 }

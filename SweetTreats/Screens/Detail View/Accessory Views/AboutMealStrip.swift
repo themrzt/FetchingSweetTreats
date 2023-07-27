@@ -143,7 +143,8 @@ struct AboutMealStrip: View {
                     Label("Watch on YouTube", systemImage: "play.tv.fill")
                 }
             }
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
         Divider()
     }
 }

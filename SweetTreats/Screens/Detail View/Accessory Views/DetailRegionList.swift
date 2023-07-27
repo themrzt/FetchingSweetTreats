@@ -25,13 +25,8 @@ struct DetailRegionList: View {
         .onAppear{
             Task{
                 let meals = viewModel.meals.filter{$0.area == area}
-                //try? await NetworkManager.shared.fetchRegionalMeals(region: area).compactMap({MealViewModel(meal: $0)})
-//                if let meals = meals{
                     updateMeals(meals: meals)
-//                }
-                
             }
-           
         }
         .navigationTitle("More \(area) Desserts")
     }

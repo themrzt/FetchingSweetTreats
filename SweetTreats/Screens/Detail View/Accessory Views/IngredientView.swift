@@ -24,7 +24,8 @@ struct IngredientView: View {
                     Divider()
                 }
             }
-        }.padding(.horizontal)
+        }
+        .padding(.horizontal)
     }
 }
 

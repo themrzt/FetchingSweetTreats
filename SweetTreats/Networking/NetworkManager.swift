@@ -105,7 +105,9 @@ class NetworkManager{
     }
     
     func fetchThumbnail(url: URL) async throws -> Data{
-        return try await requestData(requestURL: url)
+        let data = try await requestData(requestURL: url)
+        print("👀 That's \(String(data: data, encoding: .utf8))")
+        return data
     }
     
     private func requestData(requestURL: URL) async throws -> Data{

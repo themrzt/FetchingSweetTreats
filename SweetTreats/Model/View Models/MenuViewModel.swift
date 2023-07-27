@@ -10,6 +10,7 @@ import SwiftUI
 class MenuViewModel: ObservableObject{
     private let defaultsKey = "SavedTreatsMenu"
     @Published var meals = [MealViewModel]()
+    @Published var regions = [String]()
     @Published private(set) var error: MealNetworkError?
     @Published var hasError: Bool = false
     
@@ -17,7 +18,13 @@ class MenuViewModel: ObservableObject{
         loadSavedMenu()
         Task{
             await fetchMeals()
+            await postUpdatedNotification()
         }
+    }
+    
+    @MainActor
+    private func postUpdatedNotification(){
+        NotificationCenter.default.post(name: Notification.Name("UpdatedRecipesNotification"), object: nil)
     }
     
     func saveMenu(){
@@ -81,7 +88,10 @@ class MenuViewModel: ObservableObject{
         let observables = meals.map{ meal in
             return MealViewModel(meal: meal)
         }
-        self.meals = observables
+        self.meals = observables.sorted(by: {$0.name < $1.name})
+        let regions =  Set(meals.compactMap{$0.recipe?.area})
+        self.regions.append(contentsOf: regions)
+        self.regions.sort(by: {$0 < $1})
     }
 
 }

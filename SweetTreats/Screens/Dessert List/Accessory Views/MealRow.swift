@@ -11,9 +11,20 @@ struct MealRow: View {
     @ObservedObject var meal: MealViewModel
     var body: some View {
         HStack{
-            MealImageView(meal: meal)
-                .clipShape(RoundedRectangle(cornerRadius: 15))
-                .frame(maxWidth:100)
+            MealImageView(meal: meal){ phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                        .frame(maxWidth: 100)
+                        .clipShape(RoundedRectangle(cornerRadius: 15))
+                case .failure(let error):
+                    Image(systemName: "exclamationmark.triangle.fill")
+                }
+            }
             VStack(alignment: .leading){
                 Text(meal.name)
                     .font(.headline)
