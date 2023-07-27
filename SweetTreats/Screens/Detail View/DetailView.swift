@@ -19,7 +19,20 @@ struct DetailView: View {
     
     var body: some View {
         ScrollView{
-            MealImageView(meal: meal)
+            MealImageView(meal: meal){ phase in
+                switch phase {
+                case .empty:
+                    ProgressView()
+                case .success(let image):
+                    image
+                        .resizable()
+                        .scaledToFit()
+                case .failure(_ ):
+                    Image(systemName: "exclamationmark.triangle.fill")
+                @unknown default:
+                    Text("Wow, that's new")
+                }
+            }
             AboutMealStrip(viewModel: menuViewModel)
             Picker("Viewing", selection: $selectedView) {
                 ForEach(SelectedDetailView.allCases, id:\.rawValue){ detail in

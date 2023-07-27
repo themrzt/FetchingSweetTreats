@@ -29,7 +29,6 @@ struct Meal: Identifiable, Codable, Hashable{
         self.mealID = mealID
         self.name = name
         self.thumbnailURL = thumbnailURL
-        
     }
     
     #if DEBUG
