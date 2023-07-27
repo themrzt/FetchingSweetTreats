@@ -13,7 +13,7 @@ struct DessertList: View {
     @State private var searchText = ""
     @State private var selectedArea: String? = nil
 
-    var observer = NotificationCenter.default.publisher(for: Notification.Name("UpdatedRecipesNotification"))
+    let observer = NotificationCenter.default.publisher(for: Notification.Name("UpdatedRecipesNotification"))
     
     var body: some View {
         List{
